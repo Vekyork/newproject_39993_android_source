@@ -38,7 +38,7 @@ buildscript {
     repositories repos
 
     dependencies {
-        classpath "com.android.tools.build:gradle:${cordovaConfig.AGP_VERSION}"
+        classpath "com.android.tools.build:gradle:7.1.2"
 
         if (cordovaConfig.IS_GRADLE_PLUGIN_KOTLIN_ENABLED) {
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${cordovaConfig.KOTLIN_VERSION}"
@@ -184,11 +184,6 @@ task cdvPrintProps {
 
 android {
     // This excludes the need for custom build.gradle in plugins we will use only <lib-file />
-    packagingOptions {
-        exclude 'META-INF/ASL2.0'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-    }
 
     defaultConfig {
         versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
@@ -202,9 +197,6 @@ android {
         compileSdkVersion cordovaConfig.SDK_VERSION
     }
 
-    lintOptions {
-      abortOnError false
-    }
 
     buildToolsVersion cordovaConfig.BUILD_TOOLS_VERSION
 
@@ -285,6 +277,9 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+    lint {
+        abortOnError false
     }
 }
 

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/newproject_39993_android_source.iml" filepath="$PROJECT_DIR$/.idea/modules/newproject_39993_android_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CordovaLib/newproject_39993_android_source.CordovaLib.iml" filepath="$PROJECT_DIR$/.idea/modules/CordovaLib/newproject_39993_android_source.CordovaLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/newproject_39993_android_source.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/newproject_39993_android_source.app.iml" />
     </modules>
   </component>
 </project>
