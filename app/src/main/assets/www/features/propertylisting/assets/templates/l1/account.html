@@ -1,0 +1,83 @@
+<ion-view cache-view="false"
+          class="listing listing-account"
+          sb-page-background>
+    <ion-nav-title>{{ ::"My Account" | translate:"propertylisting" }}</ion-nav-title>
+    
+    <ion-content id="listing-content"
+                 class="has-header"
+                 ng-hide="is_loading"
+                 scrollbar-y="false"
+                 overflow-scroll="false"
+                 delegate-handle="mainScroll">
+        
+        <div class="loader"
+             ng-show="is_loading">
+            <ion-spinner class="spinner-custom"></ion-spinner>
+        </div>
+
+        <div class="list">
+            
+            <div class="item item-body text-center remove-border" ng-if="!is_logged_in">
+				<p>{{ ::"Login for access add property, favorites, inbox & more features" | translate:"propertylisting" }}</p>
+			</div>
+
+			<button style="margin-top: 20px;" class="button button-full button-positive-custom text-center" ng-click="myAccount()" ng-if="!is_logged_in">
+				{{ ::"Login/ Signup" | translate:"propertylisting" }}
+			</button>
+
+
+			<div class="item item-icon-right" ng-click="myAccount()" ng-if="is_logged_in">
+				<h2>{{ ::"Profile" | translate:"propertylisting" }}</h2>
+				<p>{{ ::"View & edit personal info" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+ 
+		  	<div class="item item-icon-right" ui-sref="propertylisting-plans({value_id: value_id})" ng-if="settings.enable_membership && !is_loading && is_logged_in">
+				<h2>{{ ::"My Plan" | translate:"propertylisting" }}
+					<span class="pull-right">
+						{{payload.membership.plan_name}}
+					 </span>
+			    </h2>
+				<p>{{ ::"Choose your memberships plan" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+
+			<div class="item item-icon-right" ui-sref="propertylisting-list({value_id: value_id})" ng-if="settings.enable_add_listing && !is_loading && is_logged_in">
+				<h2>{{ ::"My Properties" | translate:"propertylisting" }}</h2>
+				<p>{{ ::"Manage & edit all your properties" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+
+			<div class="item item-icon-right" ui-sref="propertylisting-add-basicinfo({value_id: value_id})" ng-if="settings.enable_add_listing && !is_loading && is_logged_in">
+				<h2>{{ ::"Post Properties" | translate:"propertylisting" }}</h2>
+				<p>{{ ::"Add new properties" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+
+			<div class="item item-icon-right" ng-if="settings.enable_message && !is_loading && is_logged_in" ui-sref="propertylisting-messages({value_id: value_id})">
+				<h2>{{ ::"Inbox" | translate:"propertylisting" }}
+				<span class="badge badge-assertive badge-assertive-custom" ng-if="payload.unread_message_count > 0">
+					{{payload.unread_message_count}}
+				</span>
+				</h2>
+				<p>{{ ::"View all messages" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+
+			<div class="item item-icon-right" ng-if="settings.enable_favorite && !is_loading && is_logged_in"  ui-sref="propertylisting-favorite({value_id: value_id})">
+				<h2>{{ ::"Favorites" | translate:"propertylisting" }}</h2>
+				<p>{{ ::"See your favorites properties" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+
+			<div class="item item-icon-right" ng-if="!is_loading && is_logged_in" ui-sref="propertylisting-history({value_id: value_id})">
+			   <h2>{{ ::"Last viewed" | translate:"propertylisting" }}</h2>
+				<p>{{ ::"See your recent view properties" | translate:"propertylisting" }}</p>
+				<i class="icon ion-chevron-right"></i>
+			</div>
+ 
+	 	</div>
+
+    </ion-content>
+
+</ion-view>

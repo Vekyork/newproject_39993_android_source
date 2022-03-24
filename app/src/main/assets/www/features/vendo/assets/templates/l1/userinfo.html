@@ -1,0 +1,44 @@
+<ion-view sb-page-background
+          class="vendo vendo-index">
+
+    <ion-nav-title>{{ pageTitle }}</ion-nav-title>
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="refresh()"
+                class="button button-clear header-item">
+            <i class="icon ion-sb-refresh"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="list">
+            <div class="item item-icon-left item-custom">
+                <i class="icon ion-document-text"></i>
+                <h2>{{ vendo.title }}</h2>
+            </div>
+            <div class="post-content">
+                <div class="item item-text-wrap item-description item-custom">
+                    {{ vendo.subtitle }}
+                </div>
+            </div>
+        </div>
+
+        <div class="list" ng-if="vendo.api_result">
+            <p>Email: {{vendo.api_result.email}}</p>
+            <p>Телефон: {{vendo.api_result.phone}}</p>
+            <p>Имя: {{vendo.api_result.first_name}}</p>
+            <p>Фамилия: {{vendo.api_result.second_name}}</p>
+            <p>Отчество: {{vendo.api_result.third_name}}</p>
+            <p>Роль: {{vendo.api_result.role}}</p>
+        </div>
+
+        <div class="list" ng-if="vendo.api_result">
+            <h2>Регион</h2>
+            <p>Подписка: {{vendo.api_result.region.subscription}}</p>
+            <p>На счету: {{vendo.api_result.region.money}}</p>
+        </div>
+
+
+    </ion-content>
+</ion-view>

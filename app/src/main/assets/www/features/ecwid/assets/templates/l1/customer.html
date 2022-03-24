@@ -1,0 +1,120 @@
+<ion-view sb-page-background
+          class="ecwid ecwid-index">
+
+    <ion-nav-title>Профиль</ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-custom button-icon icon"
+                ng-click="goTo('cart')"
+                ng-if="customer.loaded">
+            <i class="wc-icon icon icon-custom ion-ios-cart"></i>
+            <span class="badge badge-assertive badge-assertive-custom cart-badge">{{ cart_qty }}</span>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="goTo('home')"
+                class="button button-custom button-icon icon">
+            <i class="wc-icon icon icon-custom ion-home"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="list"
+            ng-if="!customer_mail || !customer.loaded"
+        >
+            <form name="customerForm"
+                  novalidate
+                  ng-show="!customer.loaded">
+
+                <div class="item item-divider">
+                    Введите ваш email на платфотме ecwid
+                </div>
+
+                <label class="item item-input">
+                    <span class="input-label">{{ ::"Email*:" | translate }}</span>
+                    <input name="email"
+                           type="email"
+                           ng-model="customer.customer_mail"
+                           required/>
+                </label>
+                <p class="error item item-custom"
+                   ng-show="customer_mail.$error.required">{{ ::"Please enter an Email." | translate }}</p>
+                <p class="error item item-custom"
+                   ng-show="customer_mail.$error.email">{{ ::"This email is invalid. Please enter a valid Email." | translate }}</p>
+
+
+                <button class="button button-block button-custom"
+                        ng-click="setCustomer()"
+                        ng-disabled="customer_mail.$invalid">
+                    Отправить
+                </button>
+            </form>
+        </div>
+
+        <div class="list"
+            ng-if="customer.customer_mail && customer.loaded"
+        >
+
+            <ion-item class="item-custom">
+                <h3>
+                    Email:
+                </h3>
+                <p>{{customer.email}}</p>
+            </ion-item>
+
+
+            <ion-item class="item-custom">
+                <h3>
+                    Имя:
+                </h3>
+                <p>{{customer.name}}</p>
+            </ion-item>
+
+            <ion-item class="item-custom">
+                <h3>
+                    Группа клиента:
+                </h3>
+                <p>{{customer.customerGroupName}}</p>
+            </ion-item>
+
+            <ion-item class="item-custom">
+                <h3>
+                    Группа клиента:
+                </h3>
+                <p>{{customer.customerGroupName}}</p>
+            </ion-item>
+        </div>
+
+        <div class="list"
+             ng-if="customer.customer_mail && customer.loaded"
+        >
+            <h2>Адресс доставки</h2>
+
+            <ion-item class="item-custom">
+                <h3>
+                    Код страны:
+                </h3>
+                <p>{{customer.billingPerson.countryCode}}</p>
+            </ion-item>
+
+
+            <ion-item class="item-custom">
+                <h3>
+                    Страна:
+                </h3>
+                <p>{{customer.billingPerson.countryName}}</p>
+            </ion-item>
+
+            <ion-item class="item-custom">
+                <h3>
+                    Город:
+                </h3>
+                <p>{{customer.billingPerson.stateOrProvinceName}}</p>
+            </ion-item>
+
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,55 @@
+<ion-view sb-page-background
+          class="vendo vendo-index">
+
+    <ion-nav-title>{{ pageTitle }}</ion-nav-title>
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="refresh()"
+                class="button button-clear header-item">
+            <i class="icon ion-sb-refresh"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="list">
+            <div class="item item-icon-left item-custom">
+                <i class="icon ion-document-text"></i>
+                <h2>{{ vendo.title }}</h2>
+            </div>
+            <div class="post-content">
+                <div class="item item-text-wrap item-description item-custom">
+                    {{ vendo.subtitle }}
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="vendo.api_result" ng-repeat="machine in vendo.api_result">
+            <div class="list">
+                <h4>Аппарат</h4>
+                <p>Серийный номер: {{machine.serial_number}}</p>
+                <p>Адрес: {{machine.address}}</p>
+                <p>Сумма в банкнотах: {{machine.banknotes_sum}}</p>
+                <h4>Монеты</h4>
+                <div ng-repeat="coin in machine.coins">
+                    <p>{{coin.nominal}}: {{coin.count}}</p>
+                </div>
+                <p>Онлайн: {{machine.is_online ? "Да" : "Нет"}}</p>
+                <p>Тип: {{machine.type}}</p>
+                <p>Название: {{machine.name}}</p>
+            </div>
+
+            <div class="list" ng-if="machine.modem">
+                <h4>Модем</h4>
+                <p>Версия прошивки: {{machine.modem.software_version}}</p>
+                <p>Дверь закрыта: {{machine.modem.door_closed ? "Да" : "Нет"}}</p>
+                <p>Серийный номер: {{machine.modem.serial_number}}</p>
+            </div>
+
+            <div class="list">
+                <hr>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view cache-view="false"
+          class="listing listing-messages"
+          sb-page-background>
+
+    <ion-nav-title> {{ ::"Messages" | translate:"propertylisting" }}</ion-nav-title>
+ 
+    <ion-content class="has-header"
+                 delegate-handle="messagesScroll">
+
+        <div class="loader"
+           ng-show="is_loading">
+          <ion-spinner class="spinner-custom"></ion-spinner>
+        </div>
+
+        <div  class="list"
+              ng-hide="is_loading"
+              ng-if="messagesCollection.length">
+          
+            <div class="item item-avatar item-custom item-icon-left"
+                 ng-repeat="value in messagesCollection | orderBy: '-created_at'"
+                 ng-click="listingMessage(value)">
+                <img ng-src="{{ messageCustomerImage(value) }}">
+                <h2>{{ messageCustomerName(value) }}</h2>
+                <p>{{value.headline}}</p>
+                <span class="item-note">
+                  {{ convertMessageDate(value.created_at) }}
+                </span>
+            </div>
+        </div>
+
+        <div class="list"
+             ng-if="!is_loading && !messagesCollection.length">
+            <div class="item text-center item-custom">
+                {{ ::"No messages yet!" | translate:"propertylisting" }}
+            </div>
+        </div>
+
+    </ion-content>
+
+</ion-view>

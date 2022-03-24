@@ -1,0 +1,88 @@
+<div class="layout f1" ng-controller="F1Controller">
+    
+    <!-- Title -->
+    <div class="row title_row">
+        <div class="title_text">
+            <span>{{ features.layoutOptions.titletext }}</span>
+        </div>
+    </div>
+
+    <!-- Blank div for extra CSS customizations like cover image, logo etc. -->
+    <div id="placeholder">
+        <div class="placeholder"></div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main_menu" class="{{ features.layoutOptions.menustate }}">
+        <div class="menubox">
+            <ion-content>
+                <ul class="items">
+                    <li ng-repeat="feature in features.options" 
+                        class="homepage-custom translucent border-custom" 
+                        tabbar-items option="feature" 
+                        go-to-url="goTo(feature)" >
+                        <img ng-src="{{ feature.icon_url }}" />
+                        <p>{{ feature.name }}</p>
+                    </li>
+                </ul>
+            </ion-content>
+        </div>
+    </div>  
+    
+    <!-- Footer Menu -->
+    <div class="tbox"> 
+        <ul class="row homepage-custom tabs tabs-icon-top">
+            <li tabbar-items class="col col-20 tab-item"
+                ng-repeat="feature in features.overview.options | limitTo : 2"
+                option="feature"
+                go-to-url="goTo(feature);">
+                <img ng-src="{{ feature.icon_url }}" />
+                <p class="{{ features.layoutOptions.title }}">{{ feature.name }}</p>
+            </li>
+            <li tabbar-items 
+                class="col col-20 tab-item"
+                ng-click="DisplayMenu()">
+                <div class="menu_btn">
+                    <i id="menu_btn" class="icon ion-plus-round {{ features.layoutOptions.menustate }}"></i>
+                </div> 
+            </li>
+            <li tabbar-items class="col col-20 tab-item"
+                ng-repeat="feature in features.overview.options | limitTo : 4"
+                option="feature"
+                go-to-url="goTo(feature);">
+                <img ng-src="{{ feature.icon_url }}" />
+                <p class="{{ features.layoutOptions.title }}">{{ feature.name }}</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<style>
+    .layout.f1 .row.title_row {
+        background: {{ features.layoutOptions.titlebg }};
+        color: {{ features.layoutOptions.titleclr }};
+    }
+
+    .layout.f1 .menubox {
+        background: {{ features.layoutOptions.menubg }};
+        height: calc({{ features.layoutOptions.menuheight }} - 65px - var(--safe-area-inset-bottom)) !important;
+        border: solid 1px {{ features.layoutOptions.menubdrclr }};
+    }
+
+    .layout.f1 .tbox .tabs { background: {{ features.layoutOptions.ftrmenubg }} !important; }
+
+    .layout.f1 .tbox li:nth-child(3) { background: {{ features.layoutOptions.ftrmenubtnbg }} !important; }
+
+    .layout.f1 .tbox li:nth-child(1), .layout.f1 .tbox li:nth-child(7) { visibility: {{ features.layoutOptions.visibility }}; }
+
+    .layout.f1 .tbox li:nth-child(2), .layout.f1 .tbox li:nth-child(6) { visibility: {{ features.layoutOptions.visibility1 }}; }
+
+    .layout.f1 .menubox ul.items li:nth-child(1), .layout.f1 .menubox ul.items li:nth-child(4) { display: {{ features.layoutOptions.visibility2 }}; }
+
+    .layout.f1 .menubox ul.items li:nth-child(2), .layout.f1 .menubox ul.items li:nth-child(3) { display: {{ features.layoutOptions.visibility3 }}; }
+
+    .layout.f1 .menubox ul.items li p { text-transform: {{ features.layoutOptions.texttransform }}; }
+
+    .layout.f1 .tbox .tab-item .icon { color: {{ features.layoutOptions.menuiconclr }}; }
+</style>

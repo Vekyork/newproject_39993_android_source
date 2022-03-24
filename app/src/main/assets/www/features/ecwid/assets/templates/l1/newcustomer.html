@@ -1,0 +1,54 @@
+<ion-view sb-page-background
+          class="ecwid ecwid-index">
+
+  <ion-nav-title>Профиль</ion-nav-title>
+
+  <ion-nav-buttons side="secondary">
+    <button ng-click="refresh()"
+            class="button button-clear header-item">
+      <i class="icon ion-sb-refresh"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <div class="list">
+      <form name="customerForm"
+            novalidate>
+
+        <div class="item item-divider">
+          Для создания нового пользователя введить логин и пароль
+        </div>
+
+        <label class="item item-input">
+          <span class="input-label">{{ ::"Email*:" | translate }}</span>
+          <input name="email"
+                 type="email"
+                 ng-model="customer.customer_mail"
+                 required/>
+        </label>
+        <p class="error item item-custom"
+           ng-show="customer_mail.$error.required">{{ ::"Please enter an Email." | translate }}</p>
+        <p class="error item item-custom"
+           ng-show="customer_mail.$error.email">{{ ::"This email is invalid. Please enter a valid Email." | translate }}</p>
+
+        <label class="item item-input">
+          <span class="input-label">{{ ::"Password*:" | translate }}</span>
+          <input name="password"
+                 type="password"
+                 ng-model="customer.customer_pass"
+                 required/>
+        </label>
+        <p class="error item item-custom"
+           ng-show="customer_pass.$error.required">{{ ::"Please enter an Password." | translate }}</p>
+
+        <button class="button button-block button-custom"
+                ng-click="createCustomer()"
+                ng-disabled="customer_mail.$invalid">
+          Отправить
+        </button>
+      </form>
+    </div>
+
+  </ion-content>
+</ion-view>

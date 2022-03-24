@@ -1,0 +1,119 @@
+/* Title Text */
+.layout.f1 .row.title_row { 
+	padding-top: var(--safe-area-inset-top);
+	height: calc(var(--safe-area-inset-top) + 44px);
+}
+
+.layout.f1 .title_text {
+	display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    margin: 0 10px;
+    min-width: 30px;
+    height: 43px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 44px;
+    margin-top: var(--safe-area-inset-top);
+}
+
+/* Main Menu */
+.layout.f1 #main_menu { display: none; }
+
+.layout.f1 #main_menu.active { display: block !important; }
+
+.layout.f1 .menubox {
+	position: absolute; 
+	left: 0;
+	right: 0;  
+	margin: 0 auto;
+	width: 100%;
+	max-height: calc(100% - var(--safe-area-inset-top) - 44px - 65px - var(--safe-area-inset-bottom));
+	border-radius: 30px 30px 0 0;
+	top: initial;
+	bottom: calc(50px + var(--safe-area-inset-bottom)) !important;
+}
+
+.layout.f1 .menubox ion-content { margin-top: 30px; }
+
+.layout.f1 .menubox ul.items { padding-bottom: 30px; }
+
+.layout.f1 .menubox ul.items li {
+	position: relative; 
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items:center;  
+	text-align: center;
+	width: 80%;  
+	height: 60px;  
+	padding: 10px;
+    border-radius: 30px;
+	margin-bottom: 10px !important;
+    margin: 0 auto;
+}
+
+.layout.f1 .menubox li img {
+	width: 30px; 
+	height: 30px;  
+	margin: 0 15px 0 15px; 
+	max-height: 100%;
+}
+
+.layout.f1 .menubox ul.items li p {
+	font-size: 13px;
+    margin: 0;
+    line-height: 40px;
+}
+
+/* Footer Menu CSS */
+.layout.f1 .tbox .tabs {
+	height: 55px; 
+	padding-top: 12px; 
+	padding-left: 0px; 
+	padding-right: 0px;
+	padding-bottom: 0px; 
+}
+
+.layout.f1 .tbox .tab-item {
+	margin-top: -5px;  
+	height: 50px;  
+}
+
+.layout.f1 .tbox .tab-item img {
+	width: 30px; 
+	height: 30px; 
+	max-height: 80%;
+}
+
+.layout.f1 .tbox p {
+	display: none;
+    line-height: 11px;
+    font-size: 11px;
+    height: 16px;
+    margin-top: 2px;
+    overflow: hidden;
+}
+
+/* Menu Button */
+.layout.f1 .tbox li:nth-child(3) {
+	border-radius: 50%; 
+	margin-top: -25px !important;
+}
+
+.layout.f1 .tbox li:nth-child(3) .menu_btn { 
+	margin-top: 0; 
+	padding: 5px;
+	border-radius: 50%;
+} 
+
+.layout.f1 .tbox li:nth-child(n+8), .layout.f1 .tbox li:nth-child(4), .layout.f1 .tbox li:nth-child(5) { display: none; }
+
+.layout.f1 .icon.ion-plus-round.active { transform: rotate(45deg); }

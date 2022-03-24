@@ -1,0 +1,63 @@
+<ion-view sb-page-background
+          class="ecwid ecwid-index">
+
+    <ion-nav-title>{{ pageTitle }}</ion-nav-title>
+
+    <ion-nav-buttons side="secondary">
+        <button ng-click="refresh()"
+                class="button button-clear header-item">
+            <i class="icon ion-sb-refresh"></i>
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="list">
+            <div class="item item-icon-left item-custom">
+                <i class="icon ion-document-text"></i>
+                <h2>{{ ecwid.title }}</h2>
+            </div>
+            <div class="post-content">
+                <div class="item item-text-wrap item-description item-custom">
+                    {{ ecwid.subtitle }}
+                </div>
+            </div>
+        </div>
+
+        <div class="list"
+             ng-if="store_id">
+
+            <div class="row">
+                <div class="col col-50"
+                     ng-click="goTo('customer')">
+                    <div class="text-center item item-custom item-text-wrap">
+                        <h1>
+                            <i class="icon ion-ios-person"></i>
+                        </h1>
+                        <h2>Профиль</h2>
+                    </div>
+                </div>
+                <div class="col col-50"
+                     ng-click="goTo('newcustomer')"
+                     ng-if="!ecwid.customerIsLoggedIn">
+                    <div class="text-center item item-custom item-text-wrap">
+                        <h1>
+                            <i class="icon ion-ios-personadd"></i>
+                        </h1>
+                        <h2>Новый пользователь</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="item item-custom item-text-wrap"
+             ng-if="!store_id && !isLoading">
+            {{ ::"Configuration error. Please contact an administrator." | translate }}
+        </div>
+        <div class="item item-custom"
+             ng-if="isLoading">
+            {{ ::"Loading" | translate }}
+        </div>
+
+    </ion-content>
+</ion-view>

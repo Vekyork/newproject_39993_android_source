@@ -1,0 +1,87 @@
+<ion-view cache-view="false"
+          class="listing listing-plans"
+          sb-page-background>
+
+    <ion-nav-title>{{ ::"Plans" | translate:"propertylisting" }}</ion-nav-title>
+ 
+    <ion-content class="has-header">
+
+        <div class="loader"
+           ng-show="is_loading">
+          <ion-spinner class="spinner-custom"></ion-spinner>
+        </div>
+
+      <div class="list" ng-show="!is_loading">
+           <div class="item item-divider item-divider-custom">
+                {{ ::"Active Plan" | translate:"propertylisting" }}
+            </div>
+         <div class="item item-custom">
+          <h2 class="plan_limit">
+            {{ ::"Plan" | translate:"propertylisting" }}
+            <span class="pull-right">
+              {{payout.membership_active.plan_name}}
+            </span>
+          </h2>
+           <p class="plan_limit">
+            {{ ::"Limit" | translate:"propertylisting" }}
+            <span class="pull-right">
+             {{payout.total_posted_count}} / {{payout.membership_active.quantity}}
+            </span>
+          </p>
+          <p class="plan-validity">
+            {{ ::"Started On" | translate:"propertylisting" }}
+            <span class="pull-right">
+            {{payout.membership_active.start_date}}
+            </span>
+          </p>
+           <p class="plan-validity">
+            {{ ::"Expired On" | translate:"propertylisting" }}
+            <span class="pull-right">
+            {{payout.membership_active.end_date}}
+            </span>
+          </p>
+           <p class="plan-validity">
+            {{ ::"Status" | translate:"propertylisting" }}
+             <span class="pull-right" ng-if="payout.membership_active.is_active">
+              {{ ::"Active" | translate:"propertylisting" }}
+            </span>
+             <span class="pull-right icon-danger-custom" ng-if="!payout.membership_active.is_active">
+              {{ ::"Expired" | translate:"propertylisting" }}
+            </span>
+          </p>
+        </div>
+      </div>
+ 
+
+      <div class="list" ng-show="!is_loading">
+           <div class="item item-divider item-divider-custom">
+                {{ ::"All Plans" | translate:"propertylisting" }}
+            </div>
+      </div>
+       <div class="list card" ng-show="!is_loading" ng-repeat="value in payout.membership_plans">
+           <div class="item item-body item-custom">
+           	<h2 class="plan_name">{{value.plan_name}}
+           		<span class="pull-right" ng-if="value.special_price != '0.00'">{{payout.currency}} {{value.special_price}} <del>{{value.price}}</del>
+           		</span>
+           		<span class="pull-right" ng-if="value.special_price == '0.00'">{{payout.currency}} {{value.price}}
+           		</span>
+           	</h2>
+	    	<img class="full-image" src="{{ planImages(value.image) }}">
+	    	<p class="plan_limit">{{ ::"Limit" | translate:"propertylisting" }}
+	    		<span class="pull-right">
+	    			{{value.listing_limits}}
+	    		</span>
+	    	</p>
+	    	<p class="plan-validity">{{ ::"Validity" | translate:"propertylisting" }}
+	    		<span class="pull-right">
+	    			{{value.validity}} {{value.validity_type}}
+	    		</span>
+	    	</p>
+		    <p class="plan-description" sb-html="value.descriptions"></p>
+		    <button class="button button-positive-custom button-full get-memberhsip-button" ng-click="getMembership(value)">
+		    	{{ ::"Upgrade" | translate:"propertylisting" }}
+		    </button>
+		   </div>
+    </div>
+  </ion-content>
+</ion-view>

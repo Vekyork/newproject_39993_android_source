@@ -1,0 +1,39 @@
+{
+    "project_info": {
+        "project_number": "479847798591",
+        "project_id": "appsfera-builder",
+        "storage_bucket": "appsfera-builder.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:479847798591:android:c6f70354cba8a11972a58a",
+                "android_client_info": {
+                    "package_name": "com.appsfera.app.android623cc4ac95c72"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "479847798591-adkhs5nohtq8oekpci1d6glc7169ahh5.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyBZOdsc-Ktr2_kbAmnpST1fmSrJeXr_Cyw"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "479847798591-adkhs5nohtq8oekpci1d6glc7169ahh5.apps.googleusercontent.com",
+                            "client_type": 3
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}
